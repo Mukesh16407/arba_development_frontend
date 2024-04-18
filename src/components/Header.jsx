@@ -17,14 +17,14 @@ export const Header = () => {
     setAnchorEl(null);
   };
   return (
-    <header>
+    <header style={{ background: "#e8eced", height: "60px", marginBottom: "10px"}}>
       <nav>
         <NavLink to="/">
           <h1>LOGO</h1>
         </NavLink>
         <div className="avtar">
           <NavLink to="/cart">
-            <ShoppingCartIcon style={{ fontSize: "3rem", color: "#00AEAE" }} />
+            <ShoppingCartIcon style={{ fontSize: "2rem", color: "#00AEAE" }} />
           </NavLink>
 
           <Avatar style={{ background: "#00AEAE" }} onClick={handleClick} />
