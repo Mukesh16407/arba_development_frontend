@@ -7,6 +7,13 @@ import { CarouselComponent } from "../../components/CarouselComponent";
 
 export const HomeDashboard = () => {
   const [data, setData] = useState([]);
+  const [showAll, setShowAll] = useState(false);
+
+  const itemsToShow = showAll ? data.length : 8;
+  const toggleShowAll = () => {
+    setShowAll(!showAll);
+  };
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +45,7 @@ export const HomeDashboard = () => {
         // rowGap: "100px"
       }}
     >
-      {data?.map((item) => (
+      {data?.slice(0, itemsToShow).map((item) => (
         <div key={item.id} style={{ width: "260px", height: "260px" }}>
           <Paper sx={{ width: "260px", border: "0.5px solid #d5d4d4" }}>
             <div style={{ position: "absolute", width: "260px" }}>
@@ -126,6 +133,11 @@ export const HomeDashboard = () => {
           </Paper>
         </div>
       ))}
+    </div>
+    <div style={{ marginTop: '20px', marginLeft: '80%' }}>
+    {!showAll && (
+        <Button sx={{ background: "#00aeae",marginTop: '20px' }} variant="contained" onClick={toggleShowAll}>Show All Products</Button>
+      )}
     </div>
     </div>
    
