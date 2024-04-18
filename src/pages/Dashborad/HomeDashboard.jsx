@@ -3,6 +3,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import axios from "axios";
+import { CarouselComponent } from "../../components/CarouselComponent";
 
 export const HomeDashboard = () => {
   const [data, setData] = useState([]);
@@ -23,7 +24,11 @@ export const HomeDashboard = () => {
   console.log("data", data);
 
   return (
-    <div
+    <div>
+      <div>
+        <CarouselComponent/>
+      </div>
+     <div
       style={{
         display: "flex",
         justifyContent: "space-evenly",
@@ -122,5 +127,7 @@ export const HomeDashboard = () => {
         </div>
       ))}
     </div>
+    </div>
+   
   );
 };
