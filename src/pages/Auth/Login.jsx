@@ -34,145 +34,103 @@ export const Login = () => {
 
   return (
     <div>
-      <Grid container component="main" sx={{ justifyContent: "space-evenly" }}>
-        <CssBaseline />
-        <Grid item xs={false} sm={4} md={4}>
-          <Box sx={{ background: "#00aeae", width: "100%", height: "85vh" }} />
-        </Grid>
+    <Grid container component="main" sx={{ justifyContent: "space-evenly" }}>
+      <CssBaseline />
+      <Grid item xs={false} sm={4} md={4}>
+        <Box sx={{ background: "#00aeae", width: "100%", height: "85vh" }} />
+      </Grid>
 
-        <Grid item xs={12} sm={8} md={3} elevation={6} square>
+      <Grid item xs={12} sm={8} md={3} elevation={6} square>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <Box
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              background: "#00aeae",
+              width: "42px",
+              height: "42px",
+              borderRadius: "30px",
             }}
+            size="medium"
+          ></Box>
+          <Typography sx={{fontWeight: 700, marginBottom: "10px"}} variant="h5">
+            APP NAME
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "16px",
+              textAlign: "center",
+            }}
+            variant="h5"
           >
-            <Box
-              sx={{
-                background: "#00aeae",
-                width: "42px",
-                height: "42px",
-                borderRadius: "30px",
-              }}
-              size="medium"
-            ></Box>
-            <Typography
-              sx={{ fontWeight: 700, marginBottom: "10px" }}
-              variant="h5"
-            >
-              APP NAME
-            </Typography>
-            <Typography
-              sx={{
-                fontSize: "16px",
-                textAlign: "center",
-              }}
-              variant="h5"
-            >
-              Lorem ipsum dolor, sit amet adipisicing qui rerum natus
-            </Typography>
-            <Box
-              component="form"
-              noValidate
-              onSubmit={handleSubmit}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                width: "100%",
-                gap: "7px",
-              }}
-            >
-              <TextField
-                variant="standard"
-                size="small"
-                required
-                fullWidth
-                id="username"
-                label="Username"
-                name="username"
-                autoComplete="username"
-                autoFocus
-              />
-              <TextField
-                variant="standard"
-                size="small"
-                required
-                fullWidth
-                id="fullname"
-                label="Fullname"
-                name="fullname"
-                autoComplete="fullname"
-                autoFocus
-              />
-              <TextField
-                variant="standard"
-                size="small"
-                required
-                fullWidth
-                id="email"
-                label="Email"
-                name="email"
-                autoComplete="email"
-                autoFocus
-              />
-              {/* <InputLabel htmlFor="password">Password</InputLabel> */}
-              <Input
-                fullWidth
-                id="password"
-                type={!showPassword ? "text" : "password"}
-                defaultValue="password"
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="password"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                    >
-                      {showPassword ? (
-                        <VisibilityOff sx={{ color: "#00aeae" }} />
-                      ) : (
-                        <Visibility sx={{ color: "#00aeae" }} />
-                      )}
-                    </IconButton>
-                  </InputAdornment>
-                }
-              />
+            Lorem ipsum dolor, sit amet adipisicing qui rerum natus
+          </Typography>
+          <Box
+            component="form"
+            noValidate
+            onSubmit={handleSubmit}
+            sx={{ display: "flex", flexDirection: "column", gap: "20px" }}
+          >
+            <TextField
+              variant="standard"
+              size="small"
+              required
+              fullWidth
+              id="username"
+              label="Username"
+              name="username"
+              autoComplete="username"
+              autoFocus
+            />
 
-              <TextField
-                variant="standard"
-                size="small"
-                required
-                fullWidth
-                name="confirmpassword"
-                label="Confirm password"
-                type="password"
-                id="confirmpassword"
-                autoComplete="confirmpassword"
-              />
 
-              <Button
-                sx={{ background: "#00aeae", borderRadius: "10px", mt: 2 }}
-                type="submit"
-                fullWidth
-                variant="contained"
-              >
-                Sign In
-              </Button>
-              <Grid container sx={{ mt: 2, mb: 1 }}>
-                <Grid item xs>
-                  <Typography>Forgot password?</Typography>
-                </Grid>
-                <Grid item>
-                  <Link sx={{ color: "#000" }} href="#" variant="body2">
-                    {"login"}
-                  </Link>
-                </Grid>
+            <Input
+              fullWidth
+              id="password"
+              type={!showPassword ? "text" : "password"}
+              defaultValue="password"
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="password"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <VisibilityOff sx={{color: "#00aeae"}} /> : <Visibility sx={{color: "#00aeae"}} />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+
+
+            <Button
+              sx={{ background: "#00aeae", borderRadius: "10px" ,mt: 2 }}
+              type="submit"
+              fullWidth
+              variant="contained"
+            >
+              Login
+            </Button>
+            <Grid container sx={{ mt: 2, mb: 1 }}>
+            <Grid item xs>
+                <Typography>
+                  Forgot password?
+                </Typography>
               </Grid>
-            </Box>
+              <Grid item>
+                <Link  href="#" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
           </Box>
-        </Grid>
+        </Box>
       </Grid>
-    </div>
+    </Grid>
+  </div>
   );
 };
