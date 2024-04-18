@@ -4,7 +4,8 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import axios from "axios";
 import { CarouselComponent } from "../../components/CarouselComponent";
-
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import { TermsAndConditions } from "../../components/TearmsAndConditions";
 export const HomeDashboard = () => {
   const [data, setData] = useState([]);
   const [showAll, setShowAll] = useState(false);
@@ -34,6 +35,9 @@ export const HomeDashboard = () => {
     <div>
       <div>
         <CarouselComponent/>
+      </div>
+      <div>
+      <TermsAndConditions/>
       </div>
      <div
       style={{
@@ -136,7 +140,7 @@ export const HomeDashboard = () => {
     </div>
     <div style={{ marginTop: '20px', marginLeft: '80%' }}>
     {!showAll && (
-        <Button sx={{ background: "#00aeae",marginTop: '20px' }} variant="contained" onClick={toggleShowAll}>Show All Products</Button>
+        <Button sx={{ background: "#00aeae",marginTop: '20px' }} variant="contained" onClick={toggleShowAll}>Show All Products <KeyboardDoubleArrowRightIcon/></Button>
       )}
     </div>
     </div>
