@@ -6,7 +6,8 @@ import { PasswordReset } from "./pages/Auth/PasswordReset";
 import { ForgotPassword } from "./pages/Auth/ForgotPassword";
 
 import { HomeDashboard } from "./pages/Dashborad/HomeDashboard";
-import Table from "./pages/Table";
+import { MyStore } from "./pages/Dashborad/MyStore";
+import { MyProfile } from "./pages/Dashborad/MyProfile";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/password-reset" element={<PasswordReset />} />
         <Route path="/forgotpassword/:id/:token" element={<ForgotPassword />} />
-        <Route path="/Table" element={<Table />} />
+        <Route path="/store" element={<MyStore />} />
+        <Route path="/profile" element={<MyProfile />} />
         {/* <Route path="*" element={<Error />} /> */}
       </Routes>
     </>

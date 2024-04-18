@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Avatar from "@mui/material/Avatar";
@@ -44,14 +44,15 @@ export const Header = () => {
                 handleClose();
               }}
             >
-              My Store
+             <Link to="/store"> My Store</Link>
             </MenuItem>
             <MenuItem
               onClick={() => {
                 handleClose();
               }}
             >
-              Profile
+              <Link to="/Profile"> Profile</Link>
+              
             </MenuItem>
             <MenuItem
               onClick={() => {
