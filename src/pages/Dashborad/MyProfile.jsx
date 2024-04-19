@@ -1,6 +1,7 @@
-import { Button, Divider, Typography,Dialog, DialogTitle, DialogContent, DialogActions, TextField  } from "@mui/material"
+import {  Divider, Typography,Dialog, DialogTitle, DialogContent, DialogActions, TextField  } from "@mui/material"
 import { useRef, useState } from "react";
 import { TermsAndConditions } from "../../components/TearmsAndConditions";
+import { MainButton } from "./MyStore";
 
 
 export const MyProfile = () => {
@@ -18,7 +19,7 @@ export const MyProfile = () => {
   const [oldPassword, setOldPassword] = useState('asdfg');
 
   const handleChangeTermAndCondition =()=>{
-    setTermAndCondition(true)
+    setTermAndCondition(!termAndCondition)
   }
 
 
@@ -83,14 +84,14 @@ src="https://akm-img-a-in.tosshub.com/indiatoday/images/author/8.%20Aishwarya%20
 onClick={handleProfilePictureClick}/>
       <Typography variant="h5">{profileData.fullName}</Typography>
       <Typography variant="body1">{profileData.userName}</Typography>
-      <Button variant="contained" sx={{ mt: 2, background: "#00aeae",  }} onClick={handleUpdateProfile}>
+      <MainButton variant="contained" sx={{ mt: 2,}} onClick={handleUpdateProfile}>
         Update Profile
-      </Button>
+      </MainButton>
       <Divider sx={{ width: '100%', marginTop:1, marginBottom: 5,  borderWidth: '1px' }} />
      
       <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', mt: 2 }}>
-        <Button variant="contained"sx={{ background: "#00aeae",  }}  onClick={handleChangeTermAndCondition}>See T&C</Button>
-        <Button variant="contained"sx={{ background: "#00aeae",  }} onClick={handlePasswordDialogOpen}>Change Password</Button>
+        <MainButton variant="contained" onClick={handleChangeTermAndCondition}>See T&C</MainButton>
+        <MainButton variant="contained" onClick={handlePasswordDialogOpen}>Change Password</MainButton>
       </div>
       <Dialog open={openDialog} onClose={handleCloseDialog}>
         <DialogTitle>Update Profile</DialogTitle>
@@ -140,8 +141,8 @@ onClick={handleProfilePictureClick}/>
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDialog} variant="contained"sx={{ background: "#00aeae",  }}>Cancel</Button>
-          <Button variant="contained"sx={{ background: "#00aeae",  }} onClick={handleCloseDialog}>Save</Button>
+          <MainButton onClick={handleCloseDialog} variant="contained">Cancel</MainButton>
+          <MainButton variant="contained" onClick={handleCloseDialog}>Save</MainButton>
         </DialogActions>
       </Dialog>
 
@@ -161,8 +162,8 @@ onClick={handleProfilePictureClick}/>
           {/* Add new password and confirm password fields */}
         </DialogContent>
         <DialogActions>
-          <Button variant="contained"sx={{ background: "#00aeae",  }} onClick={handlePasswordDialogClose}>Cancel</Button>
-          <Button variant="contained"sx={{ background: "#00aeae",  }} onClick={handlePasswordChange}>Change Password</Button>
+          <MainButton variant="contained" onClick={handlePasswordDialogClose}>Cancel</MainButton>
+          <MainButton variant="contained"onClick={handlePasswordChange}>Change Password</MainButton>
         </DialogActions>
       </Dialog>
 

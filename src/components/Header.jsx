@@ -19,8 +19,8 @@ export const Header = () => {
   return (
     <header style={{ background: "#e8eced", height: "60px", marginBottom: "10px"}}>
       <nav>
-        <NavLink to="/">
-          <h1>LOGO</h1>
+        <NavLink to="/" >
+          <h1 style={{background: "#00aeae", color: "#fff", padding: "10px"}}>LOGO</h1>
         </NavLink>
         <div className="avtar">
           <NavLink to="/cart">

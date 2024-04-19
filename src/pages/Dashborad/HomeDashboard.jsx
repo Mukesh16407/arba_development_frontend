@@ -6,16 +6,31 @@ import axios from "axios";
 import { CarouselComponent } from "../../components/CarouselComponent";
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import { TermsAndConditions } from "../../components/TearmsAndConditions";
+import { MainButton } from "./MyStore";
 export const HomeDashboard = () => {
   const [data, setData] = useState([]);
   const [showAll, setShowAll] = useState(false);
+
+  let token = JSON.parse(localStorage.getItem("Token"));
+  let item = [];
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   const itemsToShow = showAll ? data.length : 8;
   const toggleShowAll = () => {
     setShowAll(!showAll);
   };
 
+  const handleCart = (ele, id) => {
+    console.log(ele);
+    cart.push(ele);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Item Added");
+    window.location.reload();
+  };
 
+  cart.map((ele, i) => {
+    item.push(Number(ele.id));
+  });
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -129,9 +144,9 @@ export const HomeDashboard = () => {
                   </Typography>
                 </div>
 
-                <Button sx={{ height: "30px",     width: "185px", background: "#00aeae", }} variant="contained">
+                <MainButton sx={{ height: "30px", width: "185px",}} variant="contained">
                   Add to cart
-                </Button>
+                </MainButton>
               </Paper>
             </div>
           </Paper>
@@ -140,7 +155,7 @@ export const HomeDashboard = () => {
     </div>
     <div style={{ marginTop: '20px', marginLeft: '80%' }}>
     {!showAll && (
-        <Button sx={{ background: "#00aeae",marginTop: '20px' }} variant="contained" onClick={toggleShowAll}>Show All Products <KeyboardDoubleArrowRightIcon/></Button>
+        <MainButton sx={{ marginTop: '20px' }} variant="contained" onClick={toggleShowAll}>Show All Products <KeyboardDoubleArrowRightIcon/></MainButton>
       )}
     </div>
     </div>

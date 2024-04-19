@@ -1,6 +1,8 @@
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -35,9 +37,41 @@ export const Register = () => {
     <div>
     <Grid container component="main" sx={{ justifyContent: "space-evenly" }}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={4}>
-        <Box sx={{ background: "#00aeae", width: "100%", height: "85vh" }} />
-      </Grid>
+      <Grid
+          item
+          xs={false}
+          sm={4}
+          md={4}
+          sx={{ height: "85vh", overflow: "hidden" }}
+        >
+          <Box sx={{ width: "33.4%", position: "absolute" }}>
+            <Box
+              sx={{ background: "#00aeae", width: "100%", height: "85vh" }}
+            />
+          </Box>
+          <Box
+            sx={{
+              background: "#089d9d",
+              width: "36vh",
+              height: "36vh",
+              borderRadius: "50%",
+              position: "relative",
+              right: "2rem",
+              bottom: "2rem",
+            }}
+          />
+          <Box
+            sx={{
+              background: "#089d9d",
+              width: "36vh",
+              height: "36vh",
+              borderRadius: "50%",
+              position: "relative",
+              left: "17rem",
+              top: "7rem",
+            }}
+          />
+        </Grid>
 
       <Grid item xs={12} sm={8} md={3} elevation={6} square>
         <Box
@@ -47,15 +81,9 @@ export const Register = () => {
             alignItems: "center",
           }}
         >
-          <Box
-            sx={{
-              background: "#00aeae",
-              width: "42px",
-              height: "42px",
-              borderRadius: "30px",
-            }}
-            size="medium"
-          ></Box>
+  <Fab sx={{background: "#00aeae",}} size="medium" color="secondary" aria-label="add">
+   <AddIcon />
+      </Fab>
           <Typography
             sx={{ fontWeight: 700, marginBottom: "10px" }}
             variant="h5"

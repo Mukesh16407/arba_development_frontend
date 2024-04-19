@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Typography } from '@mui/material';
-import { Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+import  { useEffect, useState } from 'react';
+import { Typography } from '@mui/material';
+import {  Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+import { MainButton } from '../pages/Dashborad/MyStore';
 
 export const TermsAndConditions = () => {
     const [dialogOpen, setDialogOpen] = useState(false);
@@ -36,10 +37,10 @@ export const TermsAndConditions = () => {
 </DialogContent>
 <DialogActions sx={{ display: 'flex', justifyContent: 'space-evenly', marginBottom:"20px" }}>
 
-        <Button variant="contained" sx={{ mr: 2, background: "#00aeae", width:"160px"}} onClick={handleCancelTerms}>Cancel</Button>
-        <Button onClick={handleAcceptTerms} variant="contained" sx={{background: "#00aeae",width:"160px"}}>
+        <MainButton variant="contained" sx={{ mr: 2,width:"160px"}} onClick={handleCancelTerms}>Cancel</MainButton>
+        <MainButton onClick={handleAcceptTerms} variant="contained" sx={{width:"160px"}}>
           Accept
-        </Button>
+        </MainButton>
         
       </DialogActions>
 </Dialog>
