@@ -1,3 +1,10 @@
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+} from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
@@ -11,6 +18,8 @@ import {
   Paper,
   styled,
 } from "@mui/material";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { useState } from "react";
 
 export const MainButton = styled(Button)({
   background: "#00aeae",
@@ -35,14 +44,88 @@ const tableCellStyle = {
 };
 
 export const MyStore = () => {
+  const [open, setOpen] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const [profileData, setProfileData] = useState({
+    Name: "User 1",
+    Sluge: "user1@example.com",
+    Image: "",
+  });
+  
+  const [profileDataV2, setProfileDataV2] = useState({
+    Description: "user1@example.com",
+    Price: "5",
+    Category: "Category",
+    Img: "",
+  });
+
+  const handleUpdateProfile1 = () => {
+    setOpen(true);
+  };
+
+  const handleCloseDialog1 = () => {
+    setOpen(false);
+  };
+
+  const handleProfileFieldChange = (fieldName, value) => {
+    setProfileData((prevProfileData) => ({
+      ...prevProfileData,
+      [fieldName]: value,
+    }));
+  };
+  const handleProfileFieldChangeV2 = (fieldName, value) => {
+    setProfileDataV2((prevProfileData) => ({
+      ...prevProfileData,
+      [fieldName]: value,
+    }));
+  };
+
+  const handleSubmit = () => {
+    console.log("Saving profile data:", profileData);
+    handleCloseDialog();
+  };
+
+
+  const handleSubmitV2 = () => {
+    console.log("Saving profile data:", profileDataV2);
+    handleCloseDialog1();
+  };
+
+
+  const handleUpdateProfile = () => {
+    setOpenDialog(true);
+  };
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
+  const VisuallyHiddenInput = styled("input")({
+    clip: "rect(0 0 0 0)",
+    clipPath: "inset(50%)",
+    height: 1,
+    overflow: "hidden",
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    whiteSpace: "nowrap",
+    width: 1,
+  });
+
   return (
     <Container sx={{ display: "flex", justifyContent: "center" }}>
       <Box sx={{ width: "80%" }}>
         <Stack spacing={2} direction="row" sx={{ mt: 5 }}>
-          <MainButton sx={{ width: "100%" }} variant="contained">
+          <MainButton
+            onClick={handleUpdateProfile1}
+            sx={{ width: "100%" }}
+            variant="contained"
+          >
             Categories
           </MainButton>
-          <Products variant="contained">Products</Products>
+          <Products onClick={handleUpdateProfile} variant="contained">
+            Products
+          </Products>
         </Stack>
         <Stack spacing={2} direction="row" sx={{ mt: 5 }}>
           <MainButton variant="contained">Refresh</MainButton>
@@ -92,6 +175,128 @@ export const MyStore = () => {
             </Table>
           </Paper>
         </Box>
+        <Dialog open={open} onClose={handleCloseDialog1}>
+          <DialogTitle>Update Profile</DialogTitle>
+          <DialogContent>
+            <TextField
+              label="Name"
+              value={profileData.fullName}
+              onChange={(e) => handleProfileFieldChange("Name", e.target.value)}
+              fullWidth
+              variant="outlined"
+              margin="normal"
+            />
+            <TextField
+              label="Sluge"
+              value={profileData.Sluge}
+              onChange={(e) =>
+                handleProfileFieldChange("Sluge", e.target.value)
+              }
+              fullWidth
+              variant="outlined"
+              margin="normal"
+            />
+          </DialogContent>
+          <DialogActions
+            sx={{ justifyContent: "space-between", margin: "18px" }}
+          >
+            <MainButton
+              component="label"
+              onChange={(e) =>
+                handleProfileFieldChange("Image", e.target.value)
+              }
+              role={undefined}
+              variant="contained"
+              tabIndex={-1}
+              startIcon={<CloudUploadIcon />}
+            >
+              Upload file
+              <VisuallyHiddenInput type="file" />
+            </MainButton>
+            <Box>
+              <MainButton onClick={handleCloseDialog1} variant="contained">
+                Cancel
+              </MainButton>
+              <MainButton
+                sx={{ marginLeft: "20px" }}
+                variant="contained"
+                onClick={handleSubmit}
+              >
+                Save
+              </MainButton>
+            </Box>
+          </DialogActions>
+        </Dialog>
+
+        <Dialog open={openDialog} onClose={handleCloseDialog}>
+          <DialogTitle>Update Profile</DialogTitle>
+          <DialogContent>
+            <TextField
+              label="Img"
+              value={profileDataV2.Img}
+              onChange={(e) => handleProfileFieldChangeV2('Img', e.target.value)}
+
+              fullWidth
+              variant="outlined"
+              margin="normal"
+            />
+            <TextField
+              label="Description"
+              value={profileDataV2.Description}
+              onChange={(e) => handleProfileFieldChangeV2('Description', e.target.value)}
+              fullWidth
+              variant="outlined"
+              margin="normal"
+            />
+            <TextField
+              label="Price"
+              value={profileDataV2.Price}
+              fullWidth
+              variant="outlined"
+              margin="normal"
+              InputProps={{ readOnly: true }}
+            />
+            <TextField
+              label="Category"
+              value={profileDataV2.Category}
+              fullWidth
+              variant="outlined"
+              margin="normal"
+              
+              InputProps={{ readOnly: true }}
+            />
+
+          </DialogContent>
+          <DialogActions
+            sx={{ justifyContent: "space-between", margin: "18px" }}
+          >
+            <MainButton
+              component="label"
+              onChange={(e) =>
+                handleProfileFieldChangeV2("Img", e.target.value)
+              }
+              role={undefined}
+              variant="contained"
+              tabIndex={-1}
+              startIcon={<CloudUploadIcon />}
+            >
+              Upload file
+              <VisuallyHiddenInput type="file" />
+            </MainButton>
+            <Box>
+              <MainButton onClick={handleCloseDialog} variant="contained">
+                Cancel
+              </MainButton>
+              <MainButton
+                sx={{ marginLeft: "20px" }}
+                variant="contained"
+                onClick={handleSubmitV2}
+              >
+                Save
+              </MainButton>
+            </Box>
+          </DialogActions>
+        </Dialog>
       </Box>
     </Container>
   );
