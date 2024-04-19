@@ -1,8 +1,13 @@
-# React + Vite
+# eCommerce
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to MERN eCommerce Platform
+## Frontend - Reactjs
+## Backend - NodeJs(Mongodb + express)
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Registration, login, Home DashBoard
+- MyStore
+- Profile
+Deployed link - https://app.netlify.com/sites/lively-nougat-b860dc/overview(frontend)
+Deployed Link -https://arba-developmentbackend.onrender.com/(backend)
